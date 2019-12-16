@@ -2,6 +2,7 @@ const express = require('express');
 const redis = require('redis');
 const bodyParser = require('body-parser');
 const app = express();
+const { generateID } = require('./uid');
 
 const client = redis.createClient(6379);
 
@@ -10,7 +11,7 @@ app.use(express.static('public'));
 
 app.post('/shorten', (req, res) => {
     try {
-        return res.status(201).json(req.body);
+        return res.status(201).json({ href: generateID() });
     } catch (error) {
         console.log(error.message)
         return res.status(500);
