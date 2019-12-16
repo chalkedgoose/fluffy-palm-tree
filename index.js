@@ -3,6 +3,8 @@ const redis = require('redis');
 const bodyParser = require('body-parser');
 const app = express();
 
+const client = redis.createClient(6379);
+
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
