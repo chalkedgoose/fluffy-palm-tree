@@ -1,9 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const {
-    generateID
-} = require('./uid');
+const mongoose = require('mongoose');
+const { generateID } = require('./uid');
+
+mongoose.connect('mongodb://localhost:27017/critical-mass-url-redirection')
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
