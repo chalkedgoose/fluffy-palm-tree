@@ -1,21 +1,30 @@
 const express = require('express');
-const redis = require('redis');
 const bodyParser = require('body-parser');
 const app = express();
-const { generateID } = require('./uid');
-
-const client = redis.createClient(6379);
+const {
+    generateID
+} = require('./uid');
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
 app.post('/shorten', (req, res) => {
     try {
-        return res.status(201).json({ href: generateID() });
+        const uid = generateID();
+        return res.status(201).json({
+            href: `http://localhost:3000/${uid}`
+        });
     } catch (error) {
         console.log(error.message)
-        return res.status(500);
+        return res.status(500).send(error.message);
     }
+});
+
+app.get('*', (req, res) => {
+    // client.get(req.url.split('/')[1], (err, value) => {
+    //     if(err) return res.status(500)
+    //     res.status(200).redirect(value);
+    // });
 });
 
 app.get('/', (_, res) => {
