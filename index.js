@@ -7,8 +7,7 @@ app.use(express.json());
 app.get('/', (_, res) => res.status(200).sendFile('index.html'));
 
 app.post('/shorten', (req, res) => {
-    console.log(req.body);
-    return res.status(201).redirect('/');
+    return res.status(201).json(req.body);
 });
 
 app.listen(3000, () => console.log('URL Shortening Application Running at Port:3000'));
