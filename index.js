@@ -1,13 +1,18 @@
-const express = require('express'); 
+const express = require('express');
+const redis = require('redis');
 const bodyParser = require('body-parser');
-const app = express(); 
+const app = express();
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
 app.post('/shorten', (req, res) => {
-    console.log(req.body)
-    return res.status(201).json(req.body);
+    try {
+        return res.status(201).json(req.body);
+    } catch (error) {
+        console.log(error.message)
+        return res.status(500);
+    }
 });
 
 app.get('/', (_, res) => {
