@@ -4,7 +4,7 @@ const app = express();
 const mongoose = require('mongoose');
 const { generateID } = require('./uid');
 
-mongoose.connect('mongodb://localhost:27017/critical-mass-url-redirection')
+mongoose.connect('mongodb://localhost:27017/critical-mass-url-redirection', { useNewUrlParser: true })
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
