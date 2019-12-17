@@ -24,3 +24,6 @@ memory but also wanted to maintain a basic persistence layer.
 Since Mongo can run as an in memory Database and is MultiCored 
 it's great for the Job. I would have used Redis for sheer performance
 but it just does not support MapReduce 
+##### Why Mocha and Chai (Testing Framework)
+I am fairly comfortable with Chai since I use it quite 
+a bit and run chai tests atop of Mocha.
