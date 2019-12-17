@@ -12,6 +12,7 @@ mongoose
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
+// main shortener endpoint
 app.post('/shorten', async (req, res) => {
     try {
         const lookup = await URLMappingModel.findOne({ href: req.body.href }).exec();
@@ -36,6 +37,7 @@ app.post('/shorten', async (req, res) => {
     }
 });
 
+// redirects all urls containing a uuid to their respective sites and 404ing non existent ones.
 app.get('*', async (req, res) => {
     try {
         const lookup = await URLMappingModel.findOne({ uid: req.url.split('/')[1] }).exec();
