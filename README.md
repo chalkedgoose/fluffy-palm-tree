@@ -1,3 +1,15 @@
+##### Project Development Setup 
+Make sure you have a local instance of MongoDB running
+at the default port of 27017. 
+```
+    # Install project dependencies
+    npm i 
+    # Run automated test scripts 
+    npm run test
+    # Start up project server
+    npm run start
+```
+
 ##### How are you making the URLs shorter
 I am generating a URL safe string to map shorter 
 links to their true origins in a table setup which 
