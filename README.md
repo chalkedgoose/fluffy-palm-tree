@@ -11,19 +11,13 @@ at the default port of 27017.
 ```
 
 ##### How are you making the URLs shorter
-I am generating a URL safe string to map shorter 
-links to their true origins in a table setup which 
-enables me to search through it in short set of time. 
+I am generating a URL safe string to map shorter links to their true origins in a table set up which enables me to search through it in a short set of time. 
 ##### Why Express (Server Framework)
 Express is the server framework I am most comfortable working 
-with on a daily basis, it is stable and contains a lot of nice modules
+with daily, it is stable and contains a lot of nice modules
 for hosting static files and endpoints.
 ##### Why Mongo? (Database)
-I wanted to store url mappings as key pair values in 
-memory but also wanted to maintain a basic persistence layer. 
-Since Mongo can run as an in memory Database and is MultiCored 
-it's great for the Job. I would have used Redis for sheer performance
-but it just does not support MapReduce 
+I wanted to store URL mappings as key pair values in-memory but also wanted to maintain a basic persistence layer for reliability as a long-standing service. Since Mongo can run as an in-memory Database and is MultiCored it's great for the Job. I would have used Redis with backups for sheer performance but it just does not support MapReduce. 
 ##### Why Mocha and Chai (Testing Framework)
-I am fairly comfortable with Chai since I use it quite 
-a bit and run chai tests atop of Mocha.
+I am comfortable with Chai since I use it quite 
+a bit and run Chai tests atop of Mocha.
