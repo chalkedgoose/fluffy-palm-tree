@@ -15,12 +15,14 @@ app.use(express.static('public'));
 app.post('/shorten', async (req, res) => {
     try {
         const lookup = await URLMappingModel.findOne({ href: req.body.href }).exec();
+        // If a processed shortand URL does exist it's returned
         if(lookup !== null){
             return res.status(200).json({
                 href: `http://localhost:3000/${lookup.uid}`
             })
         }
-        if(lookup === null){
+        // if a processed shortand URL does not exist it's created
+        else if(lookup === null){
             const uid = generateID();
             const urlMapping = new URLMappingModel({ uid, href: req.body.href })
             await urlMapping.save()
@@ -55,3 +57,5 @@ app.get('/', (_, res) => {
 
 
 app.listen(3000, () => console.log('URL Shortening Application Running at Port:3000'));
+
+module.exports = app;
