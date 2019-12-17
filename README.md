@@ -1,3 +1,7 @@
+##### How are you making the URLs shorter
+I am generating a URL safe string to map shorter 
+links to their true origins in a table setup which 
+enables me to search through it in short set of time. 
 ##### Why Express (Server Framework)
 Express is the server framework I am most comfortable working 
 with on a daily basis, it is stable and contains a lot of nice modules
