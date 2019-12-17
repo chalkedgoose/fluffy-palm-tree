@@ -45,7 +45,7 @@ app.get('*', async (req, res) => {
             return res.status(200).redirect(lookup.href);
         }
         if(lookup === null){ 
-            return res.status(400).redirect('Link Not Found');
+            return res.status(400).sendFile('notfound.html');
         }
     } catch (error) {
         console.log(error.message);
@@ -53,6 +53,7 @@ app.get('*', async (req, res) => {
     }
 });
 
+// static index page
 app.get('/', (_, res) => {
     return res.status(200).sendFile('index.html');
 });
