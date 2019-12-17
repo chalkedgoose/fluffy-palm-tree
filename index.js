@@ -7,7 +7,7 @@ const { generateID } = require('./uid');
 
 mongoose
 .connect('mongodb://localhost:27017/critical-mass-url-redirection',
- { useNewUrlParser: true, useCreateIndex: true });
+ { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
@@ -20,7 +20,7 @@ app.post('/shorten', async (req, res) => {
                 href: `http://localhost:3000/${lookup.uid}`
             })
         }
-        else if(lookup === null){
+        if(lookup === null){
             const uid = generateID();
             const urlMapping = new URLMappingModel({ uid, href: req.body.href })
             await urlMapping.save()
@@ -34,11 +34,19 @@ app.post('/shorten', async (req, res) => {
     }
 });
 
-app.get('*', (req, res) => {
-    // client.get(req.url.split('/')[1], (err, value) => {
-    //     if(err) return res.status(500)
-    //     res.status(200).redirect(value);
-    // });
+app.get('*', async (req, res) => {
+    try {
+        const lookup = await URLMappingModel.findOne({ uid: req.url.split('/')[1] }).exec();
+        if(lookup !== null){
+            return res.status(200).redirect(lookup.href);
+        }
+        if(lookup === null){ 
+            return res.status(400).redirect('Link Not Found');
+        }
+    } catch (error) {
+        console.log(error.message);
+        return res.status(500).send(error.message);
+    }
 });
 
 app.get('/', (_, res) => {
