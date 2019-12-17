@@ -45,7 +45,7 @@ app.get('*', async (req, res) => {
             return res.status(200).redirect(lookup.href);
         }
         if(lookup === null){ 
-            return res.status(400).sendFile('notfound.html');
+            return res.status(400).send('Link not found');
         }
     } catch (error) {
         console.log(error.message);
