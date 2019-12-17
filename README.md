@@ -1,7 +1,7 @@
 ##### Project Development Setup 
 Make sure you have a local instance of MongoDB running
 at the default port of 27017. 
-```
+```sh
     # Install project dependencies
     npm i 
     # Run automated test scripts 
