@@ -1,5 +1,5 @@
-hrefInput = document.querySelector('#href-input');
-linkOutput = document.querySelector('#link-output');
+const hrefInput = document.querySelector('#href-input');
+const linkOutput = document.querySelector('#link-output');
 
 // sends request to shortening endpoint and modifies the DOM.
 async function fetchUrl() {
