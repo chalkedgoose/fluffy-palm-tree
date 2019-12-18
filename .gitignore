@@ -1,6 +1,7 @@
 
 # Created by https://www.gitignore.io/api/node,macos,redis,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=node,macos,redis,visualstudiocode
+/public
 
 ### macOS ###
 # General
@@ -107,9 +108,6 @@ typings/
 
 # nuxt.js build output
 .nuxt
-
-# react / gatsby 
-public/
 
 # vuepress build output
 .vuepress/dist

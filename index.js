@@ -12,6 +12,11 @@ mongoose
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
+// static index page
+app.get('/', (_, res) => {
+    return res.status(200).sendFile('index.html');
+});
+
 // main shortener endpoint
 app.post('/shorten', async (req, res) => {
     try {
@@ -52,12 +57,6 @@ app.get('*', async (req, res) => {
         return res.status(500).send(error.message);
     }
 });
-
-// static index page
-app.get('/', (_, res) => {
-    return res.status(200).sendFile('index.html');
-});
-
 
 app.listen(3000, () => console.log('URL Shortening Application Running at Port:3000'));
 
